@@ -1,0 +1,11 @@
+.container {
+  width: 80vw;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  border-bottom: none;
+}
