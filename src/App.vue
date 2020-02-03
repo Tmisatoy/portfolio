@@ -1,29 +1,32 @@
 <template>
   <div id="app">
+    <the-heading></the-heading>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import TheHeading from "./components/TheHeading";
+import "normalize.css";
+import "./css/common.css";
 
 export default {
-  name: "app",
   components: {
-  },
-  data: function() {
-    return {
-      
-    };
+    TheHeading
   }
 };
 </script>
 
-<style lang="scss">
+<style>
+/*global CSS*/
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  background-color: #e7fff6;
+}
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: "Josefin Sans", sans-serif;
 }
 </style>
