@@ -1,7 +1,7 @@
 <template>
   <header class="header">
-    <nav>
-      <ul class="navigation">
+    <nav class="menu">
+      <ul>
         <li v-for="(item,index) in items" :key="index">
           <router-link
             :to="item.path"
@@ -33,12 +33,18 @@ export default {
 </script>
 
 <style scoped>
+.menu {
+  position: fixed;
+  top: 50px;
+  right: 45px;
+  font-size: 18px;
+}
+
 .link {
-  margin-right: 10px;
+  color: #333;
 }
 .link--active {
-  font-size: 20px;
-  color: green;
+  color: #333;
 }
 </style>
 

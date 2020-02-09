@@ -1,5 +1,5 @@
 <template>
-  <div class="logo">
+  <div class="logo grid-item--left">
     <slot></slot>
   </div>
 </template>
@@ -14,6 +14,7 @@ export default {
 
 <style scoped>
 .logo {
-  font-size: 60px;
+  font-size: 55px;
+  color: #333;
 }
 </style>
