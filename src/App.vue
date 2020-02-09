@@ -24,9 +24,9 @@ export default {
 *:before,
 *:after {
   box-sizing: border-box;
-  background-color: #e7fff6;
 }
 #app {
+  background-color: #e7fff6;
   font-family: "Josefin Sans", sans-serif;
 }
 </style>
