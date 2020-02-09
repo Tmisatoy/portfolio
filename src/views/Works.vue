@@ -6,9 +6,7 @@
         <br />
       </base-logo>
     </div>
-    <div class="contact-area bands-container">
-      <h2>Contact</h2>
-    </div>
+    <div class="bands-container"></div>
   </main>
 </template>
 
