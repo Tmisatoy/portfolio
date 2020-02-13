@@ -5,7 +5,17 @@
         Misato Todaka's
         <br />Portfolio
       </base-logo>
-      <canvas id="canvas" ref="canvas" width="350px" height="200px">ブラウザが対応しておりません</canvas>
+      <div class="main-area__shape-group">
+        <transition name="fade" appear>
+          <div class="white-rectangle"></div>
+        </transition>
+        <transition name="fade" appear>
+          <canvas id="blue-canvas" ref="blueCanvas" width="350px" height="200px"></canvas>
+        </transition>
+        <transition name="fade" appear>
+          <canvas id="purple-canvas" ref="purpleCanvas" width="350px" height="200px"></canvas>
+        </transition>
+      </div>
     </div>
     <div class="bands-container">
       <i class="fas fa-caret-down fa-10x"></i>
@@ -42,28 +52,120 @@ export default {
   },
   data: function() {
     return {
-      ctx: null
+      blueCtx: null,
+      purpleCtx: null
     };
   },
+  watch: {},
   methods: {
-    rectangle() {
-      this.ctx.fillStyle = "#fff";
-      this.ctx.fillRect(0, 0, 350, 200);
+    drawTriangle() {
+      this.blueCtx.beginPath();
+      this.blueCtx.moveTo(250, 0); //最初の点の場所
+      this.blueCtx.lineTo(350, 0); //2番目の点の場所
+      this.blueCtx.lineTo(350, 100); //3番目の点の場所
+      this.blueCtx.closePath(); //三角形の最後の線 closeさせる
+      this.blueCtx.strokeStyle = "#0056D7"; //枠線の色
+      this.blueCtx.stroke();
+      this.blueCtx.fillStyle = "#0056D7";
+      this.blueCtx.fill();
+    },
+    drawTriangle2() {
+      this.purpleCtx.beginPath();
+      this.purpleCtx.moveTo(0, 100); //最初の点の場所
+      this.purpleCtx.lineTo(0, 200); //2番目の点の場所
+      this.purpleCtx.lineTo(100, 200); //3番目の点の場所
+      this.purpleCtx.closePath(); //三角形の最後の線 closeさせる
+      this.purpleCtx.strokeStyle = "#ab009a"; //枠線の色
+      this.purpleCtx.stroke();
+      this.purpleCtx.fillStyle = "#ab009a";
+      this.purpleCtx.fill();
     }
   },
   mounted() {
-    // mounted 以降で canvas の DOM にアクセスできる
-    // CreateJS などを使うときにも、ここで canvas と紐付ける
-    // console.log(this.$el)
-
-    this.ctx = this.$refs.canvas.getContext("2d");
-    this.rectangle(this.ctx);
+    this.blueCtx = this.$refs.blueCanvas.getContext("2d");
+    this.drawTriangle(this.blueCtx);
+    this.purpleCtx = this.$refs.purpleCanvas.getContext("2d");
+    this.drawTriangle2(this.purpleCtx);
   }
 };
 </script>
 
 <style scoped lang="scss">
-#canvas {
+.main-area__shape-group {
+  width: 350px;
+  height: 200px;
+  position: relative;
+}
+
+.white-rectangle {
+  z-index: 1;
+  width: 350px;
+  height: 200px;
+  background-color: #fff;
+  box-shadow: -10px 10px #888;
+  position: absolute;
+  border-radius: 50px 0 50px 0;
+  transition-delay: 1s;
+  animation: my-radius 1s;
+}
+
+#blue-canvas {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition-delay: 1s;
+  animation: slideInRight 2s;
+}
+
+#purple-canvas {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition-delay: 1s;
+  animation: slideInLeft 2s;
+}
+
+@keyframes my-radius {
+  from {
+    border-radius: 0px;
+  }
+  to {
+    border-radius: 50px;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 3s;
+}
+
+.color {
+  border-color: red;
 }
 
 .fas {
