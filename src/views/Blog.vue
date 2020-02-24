@@ -1,10 +1,10 @@
 <template>
   <main class="main-container">
     <div class="main-area">
-      <base-logo>
+      <BaseLogo>
         Blog
         <br />
-      </base-logo>
+      </BaseLogo>
     </div>
     <div class="bands-container"></div>
   </main>

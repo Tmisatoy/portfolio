@@ -1,10 +1,10 @@
 <template>
   <main class="main-container">
     <div class="main-area">
-      <base-logo>
+      <BaseLogo>
         Misato Todaka's
         <br />Portfolio
-      </base-logo>
+      </BaseLogo>
       <div class="main-area__shape-group">
         <transition name="fade" appear>
           <div class="white-rectangle"></div>
@@ -102,7 +102,7 @@ export default {
   width: 350px;
   height: 200px;
   background-color: #fff;
-  box-shadow: -10px 10px #888;
+  box-shadow: -4px 4px 10px #73a793;
   position: absolute;
   border-radius: 50px 0 50px 0;
   transition-delay: 1s;
