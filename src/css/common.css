@@ -14,12 +14,9 @@ a {
   text-decoration: none;
 }
 
-
-.main-container {}
-
 .main-area {
   width: 100%;
-  height: calc(100vh * 0.75);
+  height: calc(100vh * 0.8);
   padding: 120px 6vw 0;
   display: grid;
   grid-template-rows: 100%;
@@ -32,11 +29,21 @@ a {
   justify-self: left;
 }
 
+.grid-item--right {
+  justify-self: right;
+}
+
+.grid-item--center {
+  justify-self: center;
+}
+
+
+
 .bands-container {
   position: fixed;
   bottom: 0;
   background-color: #fff;
   width: 100vw;
-  height: calc(100vh * 0.25);
+  height: calc(100vh * 0.2);
   padding: 0 6vw;
 }
