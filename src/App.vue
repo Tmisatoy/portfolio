@@ -27,6 +27,6 @@ export default {
 }
 #app {
   background-color: #e7fff6;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Josefin Sans", "Noto Sans JP", sans-serif;
 }
 </style>
