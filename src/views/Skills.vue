@@ -5,7 +5,7 @@
         Skills
         <br />
       </BaseLogo>
-      <RadarChart :chartData="chartData" :options="options" />
+      <RadarChart :chartData="chartData" :options="options" class="grid-item--top" />
     </div>
   </main>
 </template>
@@ -58,7 +58,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .main-area--all {
   height: 100vh;
 }

@@ -51,8 +51,8 @@ export default {
       list: [
         {
           id: 1,
-          name: "TALES Hair",
-          src: require("../assets/talesJob.png"),
+          name: "TALES Hair Salon",
+          src: require("../assets/image/TalesJob.jpg"),
           alt: "ヘアーサロンの実績",
           class: "hair-salon--img",
           ruby: "テイルズ美容室HPのデザイン",
@@ -64,7 +64,7 @@ export default {
         {
           id: "2",
           name: "PreviousJob",
-          src: require("../assets/PreviosJob.png"),
+          src: require("../assets/image/PreviosJob.jpg"),
           alt: "前職の実績",
           class: "previousjob--img",
           ruby: "前職（フロントエンドエンジニア）",
@@ -108,24 +108,25 @@ export default {
 .main-area__works-group__contents__img {
   width: 90%;
   transition: all 0.5s ease-out;
-  box-shadow: -4px 4px 15px #888;
+  box-shadow: -4px 2px 20px $color-shadow;
 }
 
 .main-area__works-detail {
   align-self: start;
+  color: $color-text;
 }
 .main-area__works-detail__title {
+  color: $color-logo;
   font-size: 50px;
   transition: all 0.8s;
   margin-bottom: 10px;
 }
 .main-area__works-detail__ruby {
-  color: rgb(165, 165, 165);
+  color: $color-text;
   font-weight: lighter;
   margin-bottom: 10px;
 }
 .main-area__works-detail__tool {
-  color: #e27c7f;
   margin-bottom: 10px;
 }
 .main-area__works-detail__text {
@@ -152,7 +153,7 @@ export default {
   margin: auto;
   width: 4px;
   height: 100%;
-  background-color: #e7fff6;
+  background-color: $color-bg;
 }
 
 .pagination {
@@ -163,18 +164,18 @@ export default {
 }
 
 .tab {
-  color: rgb(165, 165, 165);
+  color: $color-text-thin;
   font-size: 30px;
   line-height: 100％;
   cursor: pointer;
   transition: all 0.5s ease 0s;
 }
 .tab:hover {
-  color: #333;
+  color: $color-text;
   transform: scale(1.2);
 }
 .active {
   transform: scale(1.2);
-  color: #333;
+  color: $color-text;
 }
 </style>

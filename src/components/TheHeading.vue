@@ -24,7 +24,6 @@ export default {
         { title: "Top", path: "/" },
         { title: "Works", path: "/works" },
         { title: "Skills", path: "/skills" },
-        { title: "About", path: "/about" },
         { title: "Blog", path: "/blog" }
       ]
     };
@@ -32,7 +31,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .menu {
   position: fixed;
   top: 50px;
@@ -41,10 +40,10 @@ export default {
 }
 
 .link {
-  color: #333;
+  color: $color-black;
 }
 .link--active {
-  color: #333;
+  color: $color-black;
 }
 </style>
 

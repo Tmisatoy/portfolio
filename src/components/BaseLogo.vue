@@ -12,9 +12,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
 .logo {
   font-size: 55px;
-  color: #333;
+  color: $color-logo;
 }
 </style>

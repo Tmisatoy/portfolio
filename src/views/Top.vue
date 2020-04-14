@@ -18,25 +18,12 @@
       </div>
     </div>
     <div class="bands-container">
-      <i class="fas fa-caret-down fa-10x"></i>
       <div class="sns-area">
         <h2>Contact</h2>
         <ul>
-          <li>
-            <p>Twitter</p>
-            <a href="https://twitter.com/luck_1117_" target="blank">@luck_1117_</a>
-          </li>
-          <li>
-            <p>Facebook</p>
-            <a href="https://www.facebook.com/profile.php?id=100017107334138" target="blank">戸高美里</a>
-          </li>
-          <li>
-            <p>Github</p>
-            <a href="https://github.com/Tmisatoy" target="blank">Tmisatoy</a>
-          </li>
-          <li>
-            <p>Qiita</p>
-            <a href="https://qiita.com/Tmisatoy" target="blank">Tmisatoy</a>
+          <li v-for="(item,index) in items" :key="index">
+            <p>{{ item.name }}</p>
+            <a :href="item.href" target="blank">{{ item.user }}</a>
           </li>
         </ul>
       </div>
@@ -46,12 +33,31 @@
 
 <script>
 import BaseLogo from "../components/BaseLogo.vue";
+
 export default {
   components: {
     BaseLogo
   },
   data: function() {
     return {
+      items: [
+        {
+          name: "Twitter",
+          href: "https://twitter.com/luck_1117_",
+          user: "@luck_1117_"
+        },
+        {
+          name: "Facebook",
+          href: "https://www.facebook.com/profile.php?id=100017107334138",
+          user: "戸高美里"
+        },
+        {
+          name: "Github",
+          href: "https://github.com/Tmisatoy",
+          user: "Tmisatoy"
+        },
+        { name: "Qiita", href: "https://qiita.com/Tmisatoy", user: "Tmisatoy" }
+      ],
       blueCtx: null,
       purpleCtx: null
     };
@@ -102,7 +108,7 @@ export default {
   width: 350px;
   height: 200px;
   background-color: #fff;
-  box-shadow: -4px 4px 10px #73a793;
+  box-shadow: -4px 4px 10px $color-shadow;
   position: absolute;
   border-radius: 50px 0 50px 0;
   transition-delay: 1s;
@@ -164,34 +170,43 @@ export default {
   transition: opacity 3s;
 }
 
-.color {
-  border-color: red;
-}
-
 .fas {
-  color: #e7fff6;
+  color: $color-bg;
   position: fixed;
   bottom: calc(100vh * 0.16);
   margin-left: 25px;
 }
 
 .sns-area {
-  color: #888;
+  position: relative;
+  color: $color-text-thin;
   height: 100%;
   display: flex;
   align-items: center;
+
+  :before {
+    font-family: "Font Awesome 5 free";
+    content: "\f0d7";
+    position: absolute;
+    top: -45px;
+    left: 2vw;
+    line-height: 1;
+    font-weight: 900;
+    color: $color-bg;
+    font-size: 100px;
+  }
   h2 {
     padding: auto 0;
     font-size: 40px;
     font-weight: normal;
+    @include mq(sp) {
+      font-size: 20px;
+    }
   }
   ul,
   li {
     margin-left: 5vw;
     font-weight: normal;
-  }
-  a {
-    color: #888;
   }
 }
 </style>
