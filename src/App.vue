@@ -8,7 +8,6 @@
 <script>
 import TheHeading from "./components/TheHeading";
 import "normalize.css";
-import "./css/common.css";
 
 export default {
   components: {
@@ -17,16 +16,5 @@ export default {
 };
 </script>
 
-<style>
-/*global CSS*/
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-#app {
-  background-color: #e7fff6;
-  font-family: "Josefin Sans", "Noto Sans JP", sans-serif;
-}
+<style lang="scss">
 </style>

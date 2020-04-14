@@ -3,7 +3,6 @@ import Router from "vue-router";
 import Top from "./views/Top.vue";
 import Works from "./views/Works.vue";
 import Skills from "./views/Skills.vue";
-import About from "./views/About.vue";
 import Blog from "./views/Blog.vue";
 
 Vue.use(Router);
@@ -27,12 +26,6 @@ export default new Router({
       path: "/skills",
       components: {
         default: Skills
-      }
-    },
-    {
-      path: "/about",
-      components: {
-        default: About
       }
     },
     {

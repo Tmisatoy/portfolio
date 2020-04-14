@@ -1,0 +1,25 @@
+body {
+  background-color: $color-bg;
+  font-family: "Josefin Sans", "Noto Sans JP", sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+}
+
+li {
+  padding: 0 15px;
+}
+
+a {
+  color: $color-text-thin;
+  text-decoration: none;
+}
