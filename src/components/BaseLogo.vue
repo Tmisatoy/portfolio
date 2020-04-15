@@ -17,4 +17,9 @@ export default {
   font-size: 55px;
   color: $color-logo;
 }
+@include mq(sp) {
+  .logo {
+    font-size: 36px;
+  }
+}
 </style>

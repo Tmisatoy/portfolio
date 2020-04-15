@@ -19,6 +19,8 @@
     </div>
     <div class="bands-container">
       <div class="sns-area">
+        <div class="sp sp-horizontal"></div>
+        <div class="sp sp-vertical"></div>
         <h2>Contact</h2>
         <ul>
           <li v-for="(item,index) in items" :key="index">
@@ -183,8 +185,7 @@ export default {
   height: 100%;
   display: flex;
   align-items: center;
-
-  :before {
+  &::before {
     font-family: "Font Awesome 5 free";
     content: "\f0d7";
     position: absolute;
@@ -195,18 +196,79 @@ export default {
     color: $color-bg;
     font-size: 100px;
   }
+  .sp {
+    display: none;
+  }
   h2 {
     padding: auto 0;
     font-size: 40px;
     font-weight: normal;
-    @include mq(sp) {
-      font-size: 20px;
-    }
   }
   ul,
   li {
     margin-left: 5vw;
     font-weight: normal;
+  }
+}
+
+@include mq(sp) {
+  .main-container {
+    height: 100vh;
+    margin: 0 8%;
+  }
+  .main-area {
+    height: 50vh;
+    padding: 1.5vh 0 1vh;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 100%;
+  }
+  .bands-container {
+    height: 250px;
+    width: 84%;
+    margin-bottom: 40px;
+  }
+  .sns-area {
+    position: relative;
+    flex-wrap: wrap;
+    padding-bottom: 40px;
+    &::before {
+      left: 38%;
+    }
+    .sp {
+      display: block;
+    }
+    .sp-horizontal {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: $color-bg;
+      top: calc(50% + 40px);
+    }
+    .sp-vertical {
+      position: absolute;
+      width: 2px;
+      height: 50%;
+      background-color: $color-bg;
+      bottom: 20px;
+      left: 50%;
+    }
+    h2 {
+      font-size: 26px;
+      margin: 40px auto 0;
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0;
+      li {
+        width: 45%;
+        margin: 15px 0 0;
+        p {
+          margin-bottom: 10px;
+        }
+      }
+    }
   }
 }
 </style>

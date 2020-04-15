@@ -45,5 +45,11 @@ export default {
 .link--active {
   color: $color-black;
 }
+
+@include mq(sp) {
+  .menu {
+    display: none;
+  }
+}
 </style>
 

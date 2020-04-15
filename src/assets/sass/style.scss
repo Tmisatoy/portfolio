@@ -1,5 +1,5 @@
-@import "color";
-@import "base";
-@import "module";
-@import "size";
+@import "./setting/color";
+@import "./setting/size";
 @import "mixin";
+@import "module";
+@import "base";
