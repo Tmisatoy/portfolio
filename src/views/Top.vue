@@ -10,10 +10,20 @@
           <div class="white-rectangle"></div>
         </transition>
         <transition name="fade" appear>
-          <canvas id="blue-canvas" ref="blueCanvas" width="350px" height="200px"></canvas>
+          <canvas
+            id="blue-canvas"
+            ref="blueCanvas"
+            width="350px"
+            height="200px"
+          ></canvas>
         </transition>
         <transition name="fade" appear>
-          <canvas id="purple-canvas" ref="purpleCanvas" width="350px" height="200px"></canvas>
+          <canvas
+            id="purple-canvas"
+            ref="purpleCanvas"
+            width="350px"
+            height="200px"
+          ></canvas>
         </transition>
       </div>
     </div>
@@ -23,7 +33,7 @@
         <div class="sp sp-vertical"></div>
         <h2>Contact</h2>
         <ul>
-          <li v-for="(item,index) in items" :key="index">
+          <li v-for="(item, index) in items" :key="index">
             <p>{{ item.name }}</p>
             <a :href="item.href" target="blank">{{ item.user }}</a>
           </li>
@@ -38,30 +48,30 @@ import BaseLogo from "../components/BaseLogo.vue";
 
 export default {
   components: {
-    BaseLogo
+    BaseLogo,
   },
-  data: function() {
+  data: function () {
     return {
       items: [
         {
+          name: "Github",
+          href: "https://github.com/Tmisatoy",
+          user: "Tmisatoy",
+        },
+        { name: "Qiita", href: "https://qiita.com/Tmisatoy", user: "Tmisatoy" },
+        {
           name: "Twitter",
-          href: "https://twitter.com/luck_1117_",
-          user: "@luck_1117_"
+          href: "",
+          user: "don't have",
         },
         {
           name: "Facebook",
-          href: "https://www.facebook.com/profile.php?id=100017107334138",
-          user: "戸高美里"
+          href: "",
+          user: "don't have",
         },
-        {
-          name: "Github",
-          href: "https://github.com/Tmisatoy",
-          user: "Tmisatoy"
-        },
-        { name: "Qiita", href: "https://qiita.com/Tmisatoy", user: "Tmisatoy" }
       ],
       blueCtx: null,
-      purpleCtx: null
+      purpleCtx: null,
     };
   },
   watch: {},
@@ -87,14 +97,14 @@ export default {
       this.purpleCtx.stroke();
       this.purpleCtx.fillStyle = "#ab009a";
       this.purpleCtx.fill();
-    }
+    },
   },
   mounted() {
     this.blueCtx = this.$refs.blueCanvas.getContext("2d");
     this.drawTriangle(this.blueCtx);
     this.purpleCtx = this.$refs.purpleCanvas.getContext("2d");
     this.drawTriangle2(this.purpleCtx);
-  }
+  },
 };
 </script>
 
@@ -103,6 +113,18 @@ export default {
   width: 350px;
   height: 200px;
   position: relative;
+  animation: shape-wrap 4s cubic-bezier(0, 0.7, 1, 0.83);
+}
+
+@keyframes shape-wrap {
+  0% {
+    clip-path: circle(0 at 50% 50%);
+    -webkit-clip-path: circle(0 at 50% 50%);
+  }
+  100% {
+    clip-path: circle(100% at 50% 50%);
+    -webkit-clip-path: circle(100% at 50% 50%);
+  }
 }
 
 .white-rectangle {
@@ -110,11 +132,19 @@ export default {
   width: 350px;
   height: 200px;
   background-color: #fff;
-  box-shadow: -4px 4px 10px $color-shadow;
   position: absolute;
   border-radius: 50px 0 50px 0;
-  transition-delay: 1s;
-  animation: my-radius 1s;
+  border-radius: 50px 0;
+  animation: rectangle-shadow 1.2s 2.4s forwards;
+}
+
+@keyframes rectangle-shadow {
+  from {
+    box-shadow: -2px 6px 2px transparent;
+  }
+  to {
+    box-shadow: -2px 6px 2px $color-shadow;
+  }
 }
 
 #blue-canvas {
@@ -122,8 +152,6 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  transition-delay: 1s;
-  animation: slideInRight 2s;
 }
 
 #purple-canvas {
@@ -131,35 +159,6 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  transition-delay: 1s;
-  animation: slideInLeft 2s;
-}
-
-@keyframes my-radius {
-  from {
-    border-radius: 0px;
-  }
-  to {
-    border-radius: 50px;
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(100px);
-  }
-  to {
-    transform: translateX(0px);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-100px);
-  }
-  to {
-    transform: translateX(0px);
-  }
 }
 
 .fade-enter,
@@ -169,7 +168,7 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 3s;
+  transition: opacity 1.8s cubic-bezier(0, 1, 0.8, 0.2);
 }
 
 .fas {
