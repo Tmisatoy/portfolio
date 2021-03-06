@@ -7,12 +7,11 @@
 
 <script>
 import TheHeading from "./components/TheHeading";
-import "normalize.css";
 
 export default {
   components: {
-    TheHeading
-  }
+    TheHeading,
+  },
 };
 </script>
 
