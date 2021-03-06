@@ -5,26 +5,30 @@
         Misato Todaka's
         <br />Portfolio
       </BaseLogo>
-      <div class="main-area__shape-group">
-        <transition name="fade" appear>
-          <div class="white-rectangle"></div>
-        </transition>
-        <transition name="fade" appear>
+      <div class="main-area__canvas-group">
+        <transition-group class="canvas-group" tag="div" name="fade" appear>
+          <canvas
+            id="white-canvas"
+            ref="whiteCanvas"
+            width="350px"
+            height="200px"
+            key="white"
+          ></canvas>
           <canvas
             id="blue-canvas"
             ref="blueCanvas"
             width="350px"
             height="200px"
+            key="blue"
           ></canvas>
-        </transition>
-        <transition name="fade" appear>
           <canvas
             id="purple-canvas"
             ref="purpleCanvas"
             width="350px"
             height="200px"
+            key="purple"
           ></canvas>
-        </transition>
+        </transition-group>
       </div>
     </div>
     <div class="bands-container">
@@ -70,12 +74,19 @@ export default {
           user: "don't have",
         },
       ],
+      whiteCtx: null,
       blueCtx: null,
       purpleCtx: null,
     };
   },
   watch: {},
   methods: {
+    drawRectangle() {
+      this.whiteCtx.beginPath();
+      this.whiteCtx.rect(0, 0, 350, 200);
+      this.whiteCtx.fillStyle = "#fff";
+      this.whiteCtx.fill();
+    },
     drawTriangle() {
       this.blueCtx.beginPath();
       this.blueCtx.moveTo(250, 0); //最初の点の場所
@@ -100,6 +111,8 @@ export default {
     },
   },
   mounted() {
+    this.whiteCtx = this.$refs.whiteCanvas.getContext("2d");
+    this.drawRectangle(this.whiteCtx);
     this.blueCtx = this.$refs.blueCanvas.getContext("2d");
     this.drawTriangle(this.blueCtx);
     this.purpleCtx = this.$refs.purpleCanvas.getContext("2d");
@@ -109,14 +122,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.main-area__shape-group {
+/*---------------------------------
+
+  main-area
+
+---------------------------------*/
+.main-area__canvas-group {
   width: 350px;
   height: 200px;
   position: relative;
-  animation: shape-wrap 4s cubic-bezier(0, 0.7, 1, 0.83);
+  animation: canvas-wrap 4s cubic-bezier(0, 0.7, 1, 0.83);
 }
-
-@keyframes shape-wrap {
+@keyframes canvas-wrap {
   0% {
     clip-path: circle(0 at 50% 50%);
     -webkit-clip-path: circle(0 at 50% 50%);
@@ -127,35 +144,32 @@ export default {
   }
 }
 
-.white-rectangle {
-  z-index: 1;
-  width: 350px;
-  height: 200px;
-  background-color: #fff;
+.canvas-group {
   position: absolute;
-  border-radius: 50px 0 50px 0;
-  border-radius: 50px 0;
-  animation: rectangle-shadow 1.2s 2.4s forwards;
+  z-index: map-get($z-index, underLay);
 }
 
+#white-canvas {
+  position: absolute;
+  border-radius: 30px 0;
+  animation: rectangle-shadow 1s 2.4s ease-in-out forwards;
+}
 @keyframes rectangle-shadow {
   from {
-    box-shadow: -2px 6px 2px transparent;
+    box-shadow: 0 2px 5px transparent;
   }
   to {
-    box-shadow: -2px 6px 2px $color-shadow;
+    box-shadow: 0 2px 5px $color-shadow;
   }
 }
 
 #blue-canvas {
-  z-index: 2;
   position: absolute;
   top: 0;
   left: 0;
 }
 
 #purple-canvas {
-  z-index: 2;
   position: absolute;
   top: 0;
   left: 0;
@@ -168,9 +182,14 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 1.8s cubic-bezier(0, 1, 0.8, 0.2);
+  transition: opacity 2.4s cubic-bezier(0, 1, 0.8, 0.2);
 }
 
+/*---------------------------------
+
+  sns-area
+
+---------------------------------*/
 .fas {
   color: $color-bg;
   position: fixed;
@@ -203,6 +222,9 @@ export default {
     font-size: 40px;
     font-weight: normal;
   }
+  ul {
+    display: flex;
+  }
   ul,
   li {
     margin-left: 5vw;
@@ -216,8 +238,8 @@ export default {
     margin: 0 8%;
   }
   .main-area {
-    height: 50vh;
-    padding: 1.5vh 0 1vh;
+    height: 56vh;
+    padding: 10vh 0 1vh;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 100%;
   }
