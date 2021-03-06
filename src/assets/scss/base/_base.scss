@@ -1,0 +1,20 @@
+// サイト全体で使用するタグ（class名を含まない）
+body {
+  background-color: $color-bg;
+  font-family: "Josefin Sans", "Noto Sans JP", sans-serif;
+  overflow: hidden;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  padding: 0 15px;
+  list-style: none;
+}
+
+a {
+  color: $color-text-thin;
+  text-decoration: none;
+}

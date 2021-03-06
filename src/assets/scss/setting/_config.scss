@@ -1,0 +1,25 @@
+// メディアクエリ
+$breakpoints: ("sp": "screen and (max-width: 559px)",
+  "pc": "screen and (min-width: 560px)"
+);
+@mixin mq($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// サイトカラー
+$color-bg: #e7fff6;
+$color-bg-thin: #F7E5E1;
+
+// ロゴカラー
+$color-logo: #515f59;
+
+// フォントカラー
+$color-text: #515f59;
+$color-text-thin: #758E85;
+$color-black: #333;
+$color-white: #fff;
+
+// シャドウ
+$color-shadow: rgba(0, 0, 0, 0.26);
